@@ -27,12 +27,12 @@ If you do not understand the difference between a histogram and a barplot, resea
 Make a histogram of the total number of steps taken each day
 
 ```{r, echo=TRUE}
-StepByDate <- data.frame(TotalStepByDate)
-barplot(StepByDate[,1], main = "Histogram of Steps taken each day",xlab ="Day 1 to Day 61")
+hist(TotalStepByDate)
 ```
 
 Calculate and report the mean and median of the total number of steps taken per day
 ```{r}
+StepByDate <- data.frame(TotalStepByDate)
 mean(StepByDate[,1],na.rm=T)
 median(StepByDate[,1],na.rm=T)
 ```
@@ -70,11 +70,11 @@ estimates from the first part of the assignment?
 What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 ```{r}
+
 StepByDateNew <- split (data,data$date, drop=T)
 TotalStepByDateNew <- sapply(StepByDateNew,function(x) sum(x$steps))
+hist(TotalStepByDateNew)
 StepByDateData <- data.frame(TotalStepByDateNew)
-barplot(StepByDateData[,1], main = "New Histogram of Steps taken each day",xlab ="Day 1 to Day 61")
-
 mean(StepByDateData[,1])
 median(StepByDateData[,1])
 ```

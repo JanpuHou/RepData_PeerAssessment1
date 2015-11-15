@@ -30,8 +30,7 @@ Make a histogram of the total number of steps taken each day
 
 
 ```r
-StepByDate <- data.frame(TotalStepByDate)
-barplot(StepByDate[,1], main = "Histogram of Steps taken each day",xlab ="Day 1 to Day 61")
+hist(TotalStepByDate)
 ```
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
@@ -39,6 +38,7 @@ barplot(StepByDate[,1], main = "Histogram of Steps taken each day",xlab ="Day 1 
 Calculate and report the mean and median of the total number of steps taken per day
 
 ```r
+StepByDate <- data.frame(TotalStepByDate)
 mean(StepByDate[,1],na.rm=T)
 ```
 
@@ -104,13 +104,13 @@ What is the impact of imputing missing data on the estimates of the total daily 
 ```r
 StepByDateNew <- split (data,data$date, drop=T)
 TotalStepByDateNew <- sapply(StepByDateNew,function(x) sum(x$steps))
-StepByDateData <- data.frame(TotalStepByDateNew)
-barplot(StepByDateData[,1], main = "New Histogram of Steps taken each day",xlab ="Day 1 to Day 61")
+hist(TotalStepByDateNew)
 ```
 
 ![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 
 ```r
+StepByDateData <- data.frame(TotalStepByDateNew)
 mean(StepByDateData[,1])
 ```
 
